@@ -38,6 +38,7 @@ class Classes
     {
         $id = filter_input(INPUT_GET,'id',FILTER_VALIDATE_INT);
         unset($_SESSION['manchete'][$id]);
+        unset($_SESSION['noticia'][$id]);
 
         header('Location: /Principal');
      }

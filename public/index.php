@@ -34,19 +34,24 @@ switch ($_SERVER['PATH_INFO']){
     case '/logout':
         $controlador = new Classes();
         $controlador->deslogar();
+        break;
 
 
     case '/salvaManchete':
         $controlador = new Classes();
         $controlador->setManchete($_POST['manchete'], nl2br($_POST['noticia']));
+        break;
 
     case '/excluir-noticia':
         $controlador = new Classes();
         $controlador->excluiManchete($_GET['id']);
+        break;
+
 
     case '/alterar-noticia':
         $controlador = new Classes();
         $controlador->alteraManchete();
+        break;
 
 
     }
