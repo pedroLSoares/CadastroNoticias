@@ -8,27 +8,28 @@ use Noticia\entity\Classes;
 session_start();
 
 
-switch ($_SERVER['PATH_INFO']){
+switch ($_SERVER['PATH_INFO']) {
 
     case '/Principal':
-        require __DIR__.'/../view/Principal.php';
+        require __DIR__ . '/../view/Principal.php';
         break;
 
     case '/exibe-noticia':
-        require __DIR__.'/../view/exibeNoticia.php';
+        require __DIR__ . '/../view/exibeNoticia.php';
         break;
 
     case '/Cadastro':
-        require __DIR__.'/../view/CadastroNoticia.php';
+        require __DIR__ . '/../view/CadastroNoticia.php';
         break;
 
+
     case '/login':
-        require __DIR__.'/../view/login.php';
+        require __DIR__ . '/../view/login.php';
         break;
 
     case '/realiza-login':
         $controlador = new Classes();
-        $controlador ->fazLogin($_POST['email'],$_POST['senha']);
+        $controlador->fazLogin($_POST['email'], $_POST['senha']);
         break;
 
     case '/logout':
@@ -42,17 +43,29 @@ switch ($_SERVER['PATH_INFO']){
         $controlador->setManchete($_POST['manchete'], nl2br($_POST['noticia']));
         break;
 
+
     case '/excluir-noticia':
         $controlador = new Classes();
         $controlador->excluiManchete($_GET['id']);
         break;
-
 
     case '/alterar-noticia':
         $controlador = new Classes();
         $controlador->alteraManchete();
         break;
 
+    case '/Cadastro-Tema':
+        require __DIR__ . '/../view/CadastroTema.php';
+        break;
 
-    }
 
+    case '/Insere-Tema':
+        $controlador = new Classes();
+        $controlador->insereTema($_POST['tema']);
+        break;
+
+    case '/excluir-tema':
+        $controlador = new Classes();
+        $controlador->excluiTema($_GET['id']);
+        break;
+}

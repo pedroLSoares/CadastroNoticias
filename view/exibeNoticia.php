@@ -1,3 +1,12 @@
+<?php
+$id = filter_input(INPUT_GET,'id',FILTER_VALIDATE_INT);
+$pdo = DatabaseConnection::connectionDatabase();
+$select = sprintf("select * from noticias where id = %d",$id);
+$query = $pdo->query($select);
+$query = $query->fetchAll();
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,9 +17,9 @@
 <body>
 <div class="container">
     <div class="jumbotron">
-        <h1><?php echo $_SESSION['manchete'][$_GET['id']] ?></h1>
+        <h1><?php echo $query[0]['manchete'] ?></h1>
     </div>
     <a href="/Principal" class="btn btn-dark mb-2">Voltar</a>
     <p>
-        <?php echo $_SESSION['noticia'][$_GET['id']] ?>
+        <?php echo $query[0]['noticia'] ?>
     </p>
